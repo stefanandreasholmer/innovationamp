@@ -760,25 +760,10 @@ body.js-ready .reveal.is-visible {
 .pricing-card.is-dark {
   background: var(--color-bg-dark);
   color: #fff;
-  position: relative;
-  overflow: hidden;
 }
 
 .pricing-card.is-dark:hover {
   box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.5);
-}
-
-.pricing-stripe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--color-accent) 0 18px,
-    var(--color-bg-dark) 18px 22px
-  );
 }
 
 .pricing-tier-label {
@@ -939,15 +924,6 @@ body.js-ready .reveal.is-visible {
 .footer {
   background: var(--color-bg-dark);
   color: #fff;
-}
-
-.footer-stripe {
-  height: 10px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--color-accent) 0 18px,
-    var(--color-bg-dark) 18px 22px
-  );
 }
 
 .footer-inner {
