@@ -13,6 +13,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- MailerLite Universal (tracking + enables the waitlist forms below) -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '539507');
+  </script>
 </head>
 <body>
 
@@ -60,8 +69,10 @@
     </p>
 
     <div class="hero-form-wrap">
-      <form class="waitlist-form" data-waitlist-form>
-        <input type="email" required placeholder="Work email" aria-label="Work email">
+      <form class="waitlist-form" data-waitlist-form action="https://assets.mailerlite.com/jsonp/539507/forms/193859673771738760/subscribe" method="post" target="ml-embed-target">
+        <input type="email" name="fields[email]" required placeholder="Work email" aria-label="Work email">
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
         <button type="submit" class="btn btn-primary">Join the waitlist</button>
       </form>
       <p class="waitlist-success" data-waitlist-success>You're on the list — we'll be in touch before launch.</p>
@@ -361,8 +372,10 @@
           <p class="footer-subtext">One email when we launch. Until then, we're running guided assessments — happy to talk.</p>
         </div>
         <div>
-          <form class="waitlist-form on-dark" data-waitlist-form>
-            <input type="email" required placeholder="Work email" aria-label="Work email">
+          <form class="waitlist-form on-dark" data-waitlist-form action="https://assets.mailerlite.com/jsonp/539507/forms/193859673771738760/subscribe" method="post" target="ml-embed-target">
+            <input type="email" name="fields[email]" required placeholder="Work email" aria-label="Work email">
+            <input type="hidden" name="ml-submit" value="1">
+            <input type="hidden" name="anticsrf" value="true">
             <button type="submit" class="btn btn-accent">Join the waitlist</button>
           </form>
           <p class="waitlist-success on-dark" data-waitlist-success>You're on the list — we'll be in touch before launch.</p>
@@ -385,6 +398,9 @@
       </div>
     </div>
   </footer>
+
+  <!-- Waitlist forms post here instead of navigating away — see js/main.js -->
+  <iframe name="ml-embed-target" title="" style="display: none" aria-hidden="true"></iframe>
 
   <script src="js/main.js"></script>
 </body>

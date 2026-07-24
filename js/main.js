@@ -44,15 +44,15 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 // ---- Waitlist forms ---------------------------------------------------------
-// There's no backend wired up yet — this just gives visual confirmation.
-// Swap the body of handleWaitlistSubmit for a real request (e.g. to
-// Formspree, Mailchimp, or your own API) when you're ready to collect emails.
+// Forms post to MailerLite with target="ml-embed-target", a hidden iframe
+// (see the bottom of index.html), so the real page never navigates away.
+// We don't preventDefault — the submission happens in the background — we
+// just swap in the success message right away.
 document.querySelectorAll('[data-waitlist-form]').forEach((form) => {
   form.addEventListener('submit', handleWaitlistSubmit);
 });
 
 function handleWaitlistSubmit(event) {
-  event.preventDefault();
   const form = event.currentTarget;
   const successMessage = form.parentElement.querySelector('[data-waitlist-success]');
 
