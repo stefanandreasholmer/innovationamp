@@ -1050,7 +1050,8 @@ body.js-ready .reveal.is-visible {
 @media (max-width: 1000px) {
   .grid-3col,
   .grid-2col,
-  .faq-layout {
+  .faq-layout,
+  .footer-grid {
     grid-template-columns: 1fr !important;
     gap: 24px;
   }
