@@ -181,17 +181,6 @@ h1, h2, h3, p {
   color: #fff;
 }
 
-.btn-outline-on-dark {
-  background: transparent;
-  border: 1px solid var(--color-navy-border-strong);
-  color: #fff;
-  padding: 13px 24px;
-}
-
-.btn-outline-on-dark:hover {
-  border-color: var(--color-accent);
-}
-
 /* Scroll-reveal: elements start hidden/offset, JS adds .is-visible when
    they enter the viewport. If JS fails to load, they're still visible
    because .reveal only hides things once .js-ready is on <body>. */
@@ -440,11 +429,6 @@ body.js-ready .reveal.is-visible {
 
 .hero-ctas .btn-accent {
   padding: 14px 26px;
-  font-size: 16px;
-}
-
-.hero-ctas .btn-outline-on-dark {
-  padding: 14px 24px;
   font-size: 16px;
 }
 
