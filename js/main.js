@@ -3,12 +3,6 @@
 
 document.body.classList.add('js-ready');
 
-// ---- Sticky nav shadow once the page has scrolled a bit -------------------
-const nav = document.getElementById('nav');
-const updateNavShadow = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
-updateNavShadow();
-window.addEventListener('scroll', updateNavShadow, { passive: true });
-
 // ---- Mobile nav toggle ------------------------------------------------------
 const navToggle = document.getElementById('navToggle');
 const navMobilePanel = document.getElementById('navMobilePanel');
@@ -43,21 +37,41 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-// ---- Waitlist forms ---------------------------------------------------------
-// Forms post to MailerLite with target="ml-embed-target", a hidden iframe
-// (see the bottom of index.html), so the real page never navigates away.
-// We don't preventDefault — the submission happens in the background — we
-// just swap in the success message right away.
-document.querySelectorAll('[data-waitlist-form]').forEach((form) => {
-  form.addEventListener('submit', handleWaitlistSubmit);
+// ---- Product tabs (Drill-down / Insights / Reporting) ----------------------
+const TAB_BLURBS = {
+  drill: "Cut every ISO 56002 component by business unit, job function, tenure, or site. When a capability divides opinion instead of averaging out, it's flagged rather than smoothed over.",
+  report: 'A quarterly report generated straight from pulse data — what moved, what was flagged, what is still open. Nothing manually assembled, so the numbers always match the dashboard.',
+  insights: 'Anonymized open text sits next to the scores that prompted it, themed by AmpAI and ranked by severity — so a number always comes with the language behind it, and a recommendation for where to act.',
+};
+
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+const tabBlurb = document.getElementById('tabBlurb');
+
+tabButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const key = button.dataset.tab;
+
+    tabButtons.forEach((b) => {
+      b.classList.toggle('is-active', b === button);
+      b.setAttribute('aria-selected', String(b === button));
+    });
+    tabPanels.forEach((panel) => {
+      panel.classList.toggle('is-active', panel.dataset.panel === key);
+    });
+    tabBlurb.textContent = TAB_BLURBS[key];
+  });
 });
 
-function handleWaitlistSubmit(event) {
-  const form = event.currentTarget;
-  const successMessage = form.parentElement.querySelector('[data-waitlist-success]');
+// ---- Waitlist form ---------------------------------------------------------
+// Posts to MailerLite with target="ml-embed-target", a hidden iframe (see
+// the bottom of index.html), so the real page never navigates away. We
+// don't preventDefault — the submission happens in the background — we
+// just swap in the success message right away.
+const waitlistForm = document.querySelector('[data-waitlist-form]');
+const waitlistSuccess = document.querySelector('[data-waitlist-success]');
 
-  form.style.display = 'none';
-  if (successMessage) {
-    successMessage.style.display = 'block';
-  }
-}
+waitlistForm.addEventListener('submit', () => {
+  waitlistForm.style.display = 'none';
+  waitlistSuccess.style.display = 'block';
+});
