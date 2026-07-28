@@ -350,13 +350,30 @@ body.js-ready .reveal.is-visible {
   background: var(--color-navy);
 }
 
-.hero-bg img {
+.hero-bg img,
+.hero-bg video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 45%;
+}
+
+.hero-bg-still {
+  display: none;
+}
+
+/* Respect the user's OS-level motion preference: show the static frame
+   instead of the autoplaying loop. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg video {
+    display: none;
+  }
+
+  .hero-bg-still {
+    display: block;
+  }
 }
 
 .hero-bg-scrim {

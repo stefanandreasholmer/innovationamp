@@ -59,7 +59,12 @@
   <!-- ============================== HERO ============================== -->
   <header id="top" class="hero">
     <div class="hero-bg">
-      <img src="assets/images/hero-waves.jpg" alt="" width="2400" height="1350">
+      <!-- autoplay requires muted; playsinline keeps it from going fullscreen on iOS -->
+      <video autoplay muted loop playsinline poster="assets/images/hero-waves.jpg">
+        <source src="assets/video/hero-loop.mp4" type="video/mp4">
+      </video>
+      <!-- shown instead of the video for prefers-reduced-motion — see css/style.css -->
+      <img src="assets/images/hero-waves.jpg" alt="" width="2400" height="1350" class="hero-bg-still">
       <div class="hero-bg-scrim"></div>
       <div class="hero-bg-gradient"></div>
     </div>
